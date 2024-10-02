@@ -45,7 +45,7 @@ z = np.array([[1],[2],[-1]])
 
 # A4 - A12
 A4 = A + B
-A5 = 3*A - 4*B
+A5 = 3*x - 4*y
 A6 = np.matmul(A,x)
 A7 = np.matmul(B,(x - y))
 A8 = np.matmul(D,x)
