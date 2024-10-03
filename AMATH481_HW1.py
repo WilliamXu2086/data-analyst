@@ -8,7 +8,7 @@ for j in range(1000):
     x = np.append(x, x[j] - ((x[j] * np.sin(3*x[j]) - np.exp(x[j]))
                 /(np.sin(3*x[j]) + 3*x[j]*np.cos(3*x[j]) - np.exp(x[j])))
     )
-    
+    times_nr += 1
     fc = x[j] * np.sin(3*x[j]) - np.exp(x[j])
     if abs(fc) < 1e-6:
         break
@@ -18,7 +18,7 @@ A1 = x
 A2 = np.array([])
 times_b = 0
 xr = -0.7; xl = -0.4 # initial guess
-for j in range(0, 100):
+for i in range(0, 100):
     times_b += 1
     xc = (xr + xl)/2
     A2 = np.append(A2, xc)
@@ -45,10 +45,12 @@ z = np.array([[1],[2],[-1]])
 # A4 - A12
 A4 = A + B
 A5 = 3*x - 4*y
-A6 = np.matmul(A,x)
-A7 = np.matmul(B,(x - y))
-A8 = np.matmul(D,x)
+A5 = A5.reshape(-1)
+A6 = np.matmul(A,x).reshape(-1)
+A7 = np.matmul(B,(x - y)).reshape(-1)
+A8 = np.matmul(D,x).reshape(-1)
 A9 = np.matmul(D,y) + z
+A9 = A9.reshape(-1)
 A10 = np.matmul(A,B)
 A11 = np.matmul(B,C)
 A12 = np.matmul(C,D)
