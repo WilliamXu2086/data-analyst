@@ -5,13 +5,11 @@ import numpy as np # type: ignore
 x = np.array([-1.6]) # initial guess
 times_nr = 0
 for j in range(1000):
-    x = np.append(
-        x, x[j] - (x[j] * np.sin(3 * x[j]) - np.exp(x[j]))
-            /(np.sin(3 * x[j]) + 3 * x[j] * np.cos(3 * x[j]) - np.exp(x[j]))
+    x = np.append(x, x[j] - ((x[j] * np.sin(3*x[j]) - np.exp(x[j]))
+                /(np.sin(3*x[j]) + 3*x[j]*np.cos(3*x[j]) - np.exp(x[j])))
     )
-    fc = x[j+1]*np.sin(3*x[j+1]) - np.exp(x[j+1])
-    times_nr += 1
     
+    fc = x[j] * np.sin(3*x[j]) - np.exp(x[j])
     if abs(fc) < 1e-6:
         break
 A1 = x
